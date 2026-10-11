@@ -1,0 +1,10 @@
+.venv/
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+node_modules/
+.neon
+*.odt
+Tidying_Cleaning_Imputation_Outlier Detection Lab#2.ipynb
