@@ -1,96 +1,165 @@
-# Lab 2 - Tidying, Cleaning, Imputation, and Outlier Detection
----
+# Lab 2 – Tidying, Cleaning, Imputation, and Outlier Detection
 
-## Project Summary
+**Course:** PROG8245 – Machine Learning Programming  
+**Assignment:** Lab 2 (Group Project)
 
-This project takes a large, messy, **wide-format** survey file (`messy_survey_wide_50k.csv`: 50,000 respondents × 50 columns) and reshapes it into **tidy, long-format tables** using `pandas.melt()`. It then visualizes the tidy data to check whether province is related to weekly spending.
+## Project Overview
 
+This project demonstrates data preprocessing using four datasets. We apply data tidying, reshaping, missing-value analysis, imputation, visualization, and outlier detection. The work is documented in a Jupyter notebook so that the steps and results can be reproduced.
 
-## Setup Instructions
+## Notebook Sections
 
-### 1. Clone and enter the repo
+### 1. Survey Data Tidying (PEW Section)
 
-```bash
-git clone https://github.com/<your-username>/Tidying_Cleaning_Imputation_Outlier_Detection.git
-cd Tidying_Cleaning_Imputation_Outlier_Detection_Lab#2
+We used the `messy_survey_wide_50k.csv` dataset to explore data tidying techniques.
 
-### 2. Create a virtual environment
-python -m venv .venv
+- Examined the dataset structure and missing values.
+- Standardized province names to maintain consistency.
+- Identified weekly spending columns (`wk1`–`wk26`).
+- Used `melt()` to transform the data from wide format to long format.
+- Visualized weekly spending patterns and provincial distributions.
 
-# Windows
-.venv\Scripts\activate
+### 2. Billboard Data Tidying
 
-# macOS / Linux
-source .venv/bin/activate
+We used the `billboard.csv` dataset to explore data cleaning and transformation.
 
-### 3. Install dependencies
-pip install -r requirements.txt
+- Examined the dataset structure and column names.
+- Standardized column names.
+- Identified missing values in ranking information.
+- Cleaned numerical ranking fields.
+- Practised reshaping and aggregating song-chart data.
 
+### 3. Cars Data Cleaning
 
-### 4. Run the notebook
-Open week5Lab_Students.ipynb in VS Code or Jupyter, select the .venv kernel, and Run cell by cell.
+We used the `auto-mpg.data` dataset to practise handling missing values.
 
-The notebook will:
+- Identified missing values in the `Horsepower` column.
+- Compared dropping rows and columns with imputation techniques.
+- Applied mean, median, and mode imputation.
+- Used Scikit-Learn's `SimpleImputer`.
+- Compared dataset statistics before and after cleaning.
+- Exported the cleaned dataset to `data/cars_cleaned.csv`.
 
+### 4. Diabetes Outlier Detection
 
-Load messy data (messy_survey_wide_50k.csv).
+We used the `diabetes_prediction_dataset.csv` dataset to identify and analyze outliers.
 
-                    Billboard Data Set
-Project Overview
-This section explores Billboard chart records using Python and Pandas. The notebook demonstrates data inspection, data-quality checks, cleaning, feature engineering, exploratory data analysis, aggregation, and data reshaping with pivot() and melt().
-The dataset used in this notebook contains 52,150 rows and 7 columns.
-Dataset
-Place the CSV file in the data/ directory. The notebook's expected file path is:
-data/billboard.csv
-The dataset fields are:
-Field	Description
-date	Date of the chart record
-rank	Current chart position
-song	Song title
-artist	Credited artist
-last_week	Previous week's chart position, when available
-peak_rank	Highest chart position reached
-weeks_on_board	Number of weeks on the chart, as represented in the source data
+- Explored numerical features including age, BMI, HbA1c level, and blood glucose level.
+- Created box plots and scatter plots to visualize potential outliers.
+- Applied Z-Score and Interquartile Range (IQR) methods.
+- Compared the number of outliers identified by each method.
+- Analyzed how filtering outliers affected descriptive statistics.
 
+## Project Structure
 
-Missing values in last_week are retained because they may indicate that a song had no recorded position in the previous chart week.
-Notebook Contents
-The Section two of notebook covers:
-1. Initial data inspection and exploratory data analysis
-2. Data structure and field mapping
-3. Data-quality checks for duplicates, missing key values, and ranking ranges
-4. Cleaning and validation of text, date, and numeric fields
-5. Feature engineering, including date-based features and rank_improvement
-6. Histograms and descriptive statistics for chart ranks and rank changes
-7. Demonstration of pivot() and melt() using a sample of song–artist pairs
-8. Weekly aggregation of chart entries and ranking statistics
-9. Dataset documentation and conclusions
-Requirements
-- Python 3.9 or newer recommended
-- Jupyter Notebook or JupyterLab
-- pandas
-- numpy
-- matplotlib
-Install the required packages with:
-pip install pandas numpy matplotlib jupyter
-How to Run
-1. Clone or download this repository.
-2. Create a folder named data beside the notebook if it does not already exist.
-3. Save the CSV as data/billboard.csv.
-4. Install the requirements listed above.
-5. Open the notebook in Jupyter Notebook, JupyterLab, or VS Code.
-6. Run the notebook cells from top to bottom.
-Example project structure:
-Billboard_Lab2/
-├── data/
-│   └── billboard.csv
-├── billboard_section2_new_dataset.ipynb
-├── README.md
-└── requirements.txt
-If your CSV has a different filename, update the file path in the notebook's data-loading cell.
-Key Notes
-- The raw dataset is kept separate from the cleaned and feature-engineered DataFrames.
-- Exact duplicate rows are checked before cleaning.
-- Missing previous-week ranks are not automatically imputed.
-- Unusual rank changes are explored rather than automatically removed, because large movements can be legitimate chart events.
-- The source dataset is already in long format. The pivot() and melt() demonstration uses a sample to show how data can be transformed between long and wide formats without changing the main feature-engineered dataset.
+The project contains the following files and folders:
+
+- `week5Lab_Students.ipynb` – Main Jupyter notebook
+- `README.md` – Project documentation
+- `requirements.txt` – Python dependencies and versions
+- `.gitignore` – Files and folders excluded from Git
+- `data/` – Source datasets and generated output files
+
+The `data/` folder contains:
+
+- `messy_survey_wide_50k.csv`
+- `billboard.csv`
+- `auto-mpg.data`
+- `diabetes_prediction_dataset.csv`
+- `cars_cleaned.csv` (generated output)
+
+## Technologies Used
+
+The following tools and libraries were used:
+
+- **Python:** Programming language for data preprocessing
+- **Jupyter Notebook:** Interactive coding and documentation
+- **Pandas:** Data loading, cleaning, and transformation
+- **NumPy:** Numerical calculations
+- **Matplotlib:** Data visualization
+- **Seaborn:** Statistical visualization
+- **Scikit-Learn:** Missing-value imputation
+- **Git and GitHub:** Version control and group collaboration
+- **Visual Studio Code:** Development environment
+
+The required Python packages and their versions are listed in `requirements.txt`.
+
+## How to Run the Project
+
+### Step 1 – Clone the Repository
+
+Clone the GitHub repository and open the project folder in Visual Studio Code.
+
+### Step 2 – Create a Virtual Environment
+
+Run the following command in the terminal:
+
+`python -m venv .venv`
+
+Activate the virtual environment in Windows PowerShell:
+
+`.\.venv\Scripts\activate`
+
+### Step 3 – Install Dependencies
+
+Install the required Python libraries using:
+
+`python -m pip install -r requirements.txt`
+
+### Step 4 – Verify Dataset Files
+
+Ensure that the required datasets are available inside the `data/` folder.
+
+### Step 5 – Execute the Notebook
+
+Open `week5Lab_Students.ipynb` in Visual Studio Code.
+
+Select the Python virtual environment as the Jupyter kernel.
+
+Run all cells from beginning to end and examine the results, graphs, and observations.
+
+## Key Findings
+
+### Cars Dataset
+
+We identified six missing values in the `Horsepower` column.
+
+We compared different missing-value handling techniques, including dropping records and replacing missing values using mean, median, and mode.
+
+Median imputation was considered suitable because the Horsepower distribution was right-skewed and higher values could influence the mean.
+
+### Diabetes Dataset
+
+The Diabetes Prediction Dataset contained 100,000 records.
+
+Using the Z-Score method with a threshold of `|z| > 3`, we identified **1,294 potential BMI outliers**.
+
+Using the IQR method, we identified **7,086 potential BMI outliers**.
+
+After filtering the IQR-flagged observations in a separate DataFrame, the number of records decreased from 100,000 to 92,914.
+
+The analysis showed that extreme values can affect the mean and standard deviation, while the median is generally less sensitive.
+
+We also observed that unusual medical measurements are not necessarily errors and should be investigated before removal.
+
+## Reproducibility and Testing
+
+Our group used a shared GitHub repository to collaborate on this assignment.
+
+One team member created the repository, and other team members cloned it onto their computers.
+
+We used `requirements.txt` to install the required Python libraries and executed our assigned notebook sections.
+
+This process helped us verify that the project files and dependencies could be shared and used across different development environments.
+
+The Jupyter notebook includes a separate Replicability Check section documenting the testing process and results.
+
+## Conclusion
+
+This assignment helped us improve our understanding of data preprocessing techniques.
+
+We gained practical experience in data tidying, handling missing values, imputation, data visualization, and outlier detection.
+
+We also practised software engineering principles through Markdown documentation, dependency management, GitHub collaboration, and reproducibility testing.
+
+These techniques are important for preparing reliable datasets before applying machine learning algorithms.
